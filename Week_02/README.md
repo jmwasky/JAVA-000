@@ -18,3 +18,8 @@
 
 ### easyer-http 为 httpclient访问8801的代码
 ### 其他两个docx文件为实验记录
+
+#学号:G20200579010502
+#姓名:梁超
+#班级:4班
+#作业链接:https://github.com/jmwasky/JAVA-000/tree/main/Week_02
