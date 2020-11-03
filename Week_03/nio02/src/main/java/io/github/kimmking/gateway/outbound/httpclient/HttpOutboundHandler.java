@@ -1,5 +1,6 @@
 package io.github.kimmking.gateway.outbound.httpclient;
 
+import io.github.kimmking.gateway.common.Constants;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
@@ -51,7 +52,11 @@ public class HttpOutboundHandler {
             byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
             System.out.println(new String(body));
 
+            String nioHeaderValue = fullRequest.headers().get(Constants.HEADER_NIO);
+
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
+            response.headers().set(Constants.HEADER_NIO, nioHeaderValue);
+
         } catch (Exception e) {
             e.printStackTrace();
             response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
