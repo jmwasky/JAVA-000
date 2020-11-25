@@ -1,7 +1,3 @@
-学习笔记
-
-- 2.(必做):基于电商交易场景（用户、商品、订单），设计一套简单的表结构，提交DDL的SQL文件到Github（后面2周的作业依然要是用到这个表结构）。
-```
 CREATE TABLE `t_account` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `account_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名',
@@ -40,5 +36,3 @@ CREATE TABLE `t_product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='商品表';
 
-
-```
