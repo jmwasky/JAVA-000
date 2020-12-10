@@ -1,5 +1,7 @@
 package com.isaac.easy.mysqldbsample.service;
 
+import com.isaac.easy.mysqldbsample.mall.module.MallOrder;
+
 import java.math.BigDecimal;
 
 /**
@@ -10,11 +12,10 @@ public interface IPaymentService {
 
     /**
      *
-     * @param count
-     * @param amount
+     * @param order
      * @return
      */
-    boolean payOrder( Integer count, BigDecimal amount);
+    boolean payOrder( MallOrder order );
     /**
      *
      * @param count

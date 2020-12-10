@@ -8,6 +8,12 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface MallProductMapper {
+    @Update("update t_product set freeze_count = freeze_count - #{consumeCount} where id = #{accountId}")
+    int confirm( MallOrder order );
+
+    @Update("update t_product set total = total + #{consumeCount}, freeze_count = freeze_count - #{consumeCount} where id = #{accountId}")
+    int cancel( MallOrder order );
+
     @Update("update t_product set total = total - #{consumeCount}, freeze_count = freeze_count + #{consumeCount} where id = #{productId}")
     int updateTry( MallOrder order );
     /**

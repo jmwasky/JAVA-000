@@ -22,18 +22,19 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public MallOrder tryPayOrder( Integer count, BigDecimal amount ) {
-        MallOrder order = builderOrder(count, amount);
-        mallOrderMapper.insertSelective(order);
-        return order;
+
+        MallOrder updateOrder = builderOrder(count, amount.longValue());
+        mallOrderMapper.insertSelective(updateOrder);
+        return updateOrder;
     }
-    private MallOrder builderOrder ( Integer count, BigDecimal amount) {
+    private MallOrder builderOrder ( Integer count, Long amount) {
         MallOrder order = new MallOrder();
         order.setAccountId(1L);
         order.setProductId(1L);
         order.setDeliveryId(1L);
         order.setCreateTime(System.currentTimeMillis());
         order.setConsumeCount(count);
-        order.setTotalAmount(amount.longValue());
+        order.setTotalAmount(amount);
         order.setStatus(0);
         return order;
     }

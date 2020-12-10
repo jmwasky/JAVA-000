@@ -7,6 +7,7 @@ import com.isaac.easy.mysqldbsample.mall.module.MallAccount;
 import com.isaac.easy.mysqldbsample.mall.module.MallAccountExample;
 import com.isaac.easy.mysqldbsample.mall.module.MallOrder;
 import com.isaac.easy.mysqldbsample.mall.module.MallOrderExample;
+import com.isaac.easy.mysqldbsample.service.IOrderService;
 import com.isaac.easy.mysqldbsample.service.IPaymentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,8 @@ public class MallController {
 
     @Resource
     private IPaymentService paymentService;
+    @Resource
+    private IOrderService orderService;
 
     @GetMapping("/ping")
     public String ping(){
@@ -37,7 +40,8 @@ public class MallController {
 
     @PostMapping("/payOrder")
     public int payOrder( Integer count, BigDecimal amount ) {
-        paymentService.payOrder(count, amount);
+        MallOrder order = orderService.tryPayOrder(count, amount);
+        paymentService.payOrder(order);
         return 1;
     }
     @PostMapping("/payOrderWithException")
