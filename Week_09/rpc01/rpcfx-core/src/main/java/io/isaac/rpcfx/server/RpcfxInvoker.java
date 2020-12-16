@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.isaac.rpcfx.api.RpcfxResponse;
 import io.isaac.rpcfx.api.RpcfxRequest;
 import io.isaac.rpcfx.api.RpcfxResolver;
+import io.isaac.rpcfx.exception.RpcfxException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -20,7 +21,7 @@ public class RpcfxInvoker {
 
     public RpcfxResponse invoke( RpcfxRequest request) {
         RpcfxResponse response = new RpcfxResponse();
-        String serviceClass = request.getServiceClass();
+        //String serviceClass = request.getServiceClass();
 
         // 作业1：改成泛型和反射
         Object service = resolver.resolve(request.getClazz());//this.applicationContext.getBean(serviceClass);
@@ -32,14 +33,13 @@ public class RpcfxInvoker {
             response.setResult(JSON.toJSONString(result, SerializerFeature.WriteClassName));
             response.setStatus(true);
             return response;
-        } catch ( IllegalAccessException | InvocationTargetException e) {
-
+        } catch (IllegalAccessException | InvocationTargetException e) {
             // 3.Xstream
-
             // 2.封装一个统一的RpcfxException
             // 客户端也需要判断异常
             e.printStackTrace();
-            response.setException(e);
+            RpcfxException ex = new RpcfxException(e.getMessage());
+            response.setException(ex);
             response.setStatus(false);
             return response;
         }
