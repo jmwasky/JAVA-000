@@ -2,6 +2,7 @@ package io.isaac.rpcfx.client;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.ParserConfig;
 import io.isaac.rpcfx.api.RpcfxResponse;
 import io.isaac.rpcfx.api.RpcfxRequest;
@@ -35,6 +36,8 @@ public final class Rpcfx {
     static {
         ParserConfig.getGlobalInstance().addAccept("io.isaac");
     }
+
+
 
     public static <T> T create(final Class<T> serviceClass, final String url) {
         T result = null;
@@ -81,12 +84,11 @@ public final class Rpcfx {
         @Override
         public Object invoke(Object proxy, Method method, Object[] params) throws Throwable {
             RpcfxRequest request = new RpcfxRequest();
-           // request.setServiceClass(this.serviceClass.getName());
             request.setClazz(this.serviceClass);
             request.setMethod(method.getName());
             request.setParams(params);
 
-            RpcfxResponse response = post(request, url);
+            RpcfxResponse response = postHttpClient(request, url);
             // 这里判断response.status，处理异常
             if (!response.isStatus()) {
                 throw new RuntimeException(response.getException().getMessage());
@@ -96,18 +98,30 @@ public final class Rpcfx {
             return JSON.parse(response.getResult().toString());
         }
 
-        private RpcfxResponse post(RpcfxRequest req, String url) throws IOException {
+        private RpcfxResponse postOkClient(RpcfxRequest req, String url) throws IOException {
             String reqJson = JSON.toJSONString(req);
             System.out.println("req json: "+reqJson);
 
             // 1.可以复用client
             // 2.尝试使用httpclient或者netty client
+
             OkHttpClient client = new OkHttpClient();
             final Request request = new Request.Builder()
                     .url(url)
                     .post(RequestBody.create(JSONTYPE, reqJson))
                     .build();
             String respJson = client.newCall(request).execute().body().string();
+            System.out.println("resp json: "+respJson);
+            return JSON.parseObject(respJson, RpcfxResponse.class);
+        }
+        private RpcfxResponse postHttpClient(RpcfxRequest req, String url) throws IOException {
+            String reqJson = JSON.toJSONString(req);
+            System.out.println("req json: "+reqJson);
+
+            // 1.可以复用client
+            // 2.尝试使用httpclient或者netty client
+
+            String respJson = RpcfxHttpClient.clientPost(url, reqJson);
             System.out.println("resp json: "+respJson);
             return JSON.parseObject(respJson, RpcfxResponse.class);
         }

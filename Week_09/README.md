@@ -8,4 +8,4 @@
 1）rebase方式无法创建，提示" Cannot only define public, static, final field 'delegate$f0pnm81' for interface type"，   
 2）使用subClass实现，无法调用服务端。
 3. 尝试使用Netty+HTTP作为client端传输方式
-> 
+> 使用httpclient
