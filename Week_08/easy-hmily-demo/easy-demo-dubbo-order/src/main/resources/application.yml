@@ -1,0 +1,40 @@
+server:
+  port: 8088
+  address: 0.0.0.0
+  servlet:
+    context-path: /
+
+dubbo:
+  scan:
+    base-packages: com.easy.hmily.order
+  registry:
+    address: zookeeper://localhost:2181
+  metadata-report:
+    address: zookeeper://localhost:2181
+
+spring:
+  application:
+    name: dubbo-demo-order
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password:
+
+mybatis:
+  type-aliases-package: com.easy.hmily.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+
+logging:
+    level:
+        root: error
+        org.springframework.web: info
+        org.apache.ibatis: debug
+        org.dromara.hmily.demo.bonuspoint: debug
+        org.dromara.hmily.demo.lottery: debug
+        org.dromara.hmily.demo: debug
+        io.netty: info
+    path: "./logs"
+
