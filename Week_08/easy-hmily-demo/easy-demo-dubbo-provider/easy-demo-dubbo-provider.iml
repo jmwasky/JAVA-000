@@ -16,14 +16,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-starter:2.7.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-autoconfigure:2.7.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-autoconfigure-compatible:2.7.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo:2.7.7" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.spring:spring-context-support:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.49.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="module" module-name="easy-demo-common" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-annotation:2.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
@@ -47,6 +39,14 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-starter:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-autoconfigure:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo-spring-boot-autoconfigure-compatible:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.dubbo:dubbo:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.spring:spring-context-support:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.49.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-spring-boot-starter-dubbo:2.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-spring-boot-starter-parent:2.1.2-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-spring:2.1.2-SNAPSHOT" level="project" />

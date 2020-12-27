@@ -1,0 +1,18 @@
+CREATE TABLE `t_fx_account` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `account_id` bigint(11) NOT NULL COMMENT '用户id',
+  `create_time` bigint(11) NOT NULL COMMENT '创建时间',
+  `amount` double(11,9) NOT NULL COMMENT '金额',
+  `freeze` double(11,9) NOT NULL COMMENT '冻结资金',
+  `currency` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '货币类型',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='资金表';
+
+CREATE TABLE `t_fx_exchange` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `currency_pair` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '货币对',
+  `create_time` bigint(11) NOT NULL COMMENT '创建时间',
+  `exchange_reate` double(11,9) NOT NULL COMMENT '货币汇率',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='汇率表';
+

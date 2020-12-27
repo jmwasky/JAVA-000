@@ -13,6 +13,11 @@
     <artifactId>easy-demo-dubbo-privider</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.isaac.easy</groupId>
+            <artifactId>easy-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- Dubbo Spring Boot Starter -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

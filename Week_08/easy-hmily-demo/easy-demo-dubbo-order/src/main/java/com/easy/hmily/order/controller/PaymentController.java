@@ -21,9 +21,10 @@ import com.easy.hmily.api.IAccountService;
 import com.easy.hmily.api.IOrderService;
 import com.easy.hmily.api.IPaymentService;
 import com.easy.hmily.entity.Order;
+import com.easy.hmily.entity.PaymentVo;
+import com.google.gson.internal.$Gson$Preconditions;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,11 +36,8 @@ import java.math.BigDecimal;
  * @author xiaoyu
  */
 @RestController
-@RequestMapping("/order")
-public class OrderController {
-
-    @DubboReference(version = "1.0.0")
-    private IAccountService accountService;
+@RequestMapping("/payment")
+public class PaymentController {
 
     @DubboReference(version = "1.0.0")
     private IOrderService orderService;
@@ -52,7 +50,8 @@ public class OrderController {
     public String orderPay(@RequestParam(value = "count") Integer count,
                            @RequestParam(value = "amount") BigDecimal amount) {
         final long start = System.currentTimeMillis();
-        Order order = orderService.findById(1);
+        PaymentVo paymentVo = new PaymentVo();
+        Order order = paymentService.payment(paymentVo);
         System.out.println("消耗时间为:" + (System.currentTimeMillis() - start));
         System.out.println("order:" +order);
         return "";
