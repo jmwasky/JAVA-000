@@ -31,8 +31,6 @@ public class TestRequest {
                 .build();
         String respJson = client.newCall(request).execute().body().string();
         System.out.println(respJson);
-
-
     }
 
     public static void main( String[] args ) throws IOException {
