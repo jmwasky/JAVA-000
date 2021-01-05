@@ -4,6 +4,7 @@
 
 - Redis 主从复制  
 > 1. docker 创建两个redis服务，redis01:6379, redis02:6380, 通过 docker inspect <container id> 查找redis01的ip。  
+  ![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_11/redis/imges/Redis01-01.png)
 > 创建docker redis 命令 
 > ···
 > docker run -p 6380:6380 --name redis02 -v d:/docker/redis/redis02/conf.d/redis.conf:/etc/redis/redis.conf -v d:/docker/redis/redis02/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes
