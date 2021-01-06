@@ -9,7 +9,7 @@
   ```
 - 列出redis01和redis02的keys：  
 ![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis01-01.png)   
-![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-02.png)
+![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-01.png)
 - 在redis02命令界面输入：slaveof <masterIp> <masterPort> 设置主从, slaveof 172.17.0.2 6379    
 ![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis01-02-slaveof-info.png)    
 ![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-02-slaveof-info.png)  
@@ -45,11 +45,11 @@
    ![cluster create 2](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Cluster_create_2.png)  
 - 验证集群效果  
 1. 查看集群状态  
-  ![cluster create 1](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Cluster_info.png)
+   ![cluster create info](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Cluster_info.png)
 2. 查看单个节点状态
    ```shell script
     redis-cli --cluster check 172.17.0.6:6379
    ```
    结果：  
-   ![cluster check](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Cluster_create.png)  
+   ![cluster check](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Cluster_check.png)
 3. 使用redis-cli -c进入交互模式
