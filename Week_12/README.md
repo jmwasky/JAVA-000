@@ -8,13 +8,13 @@
   docker run -p 6380:6380 --name redis02 -v d:/docker/redis/redis02/conf.d/redis.conf:/etc/redis/redis.conf -v d:/docker/redis/redis02/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes
   ```
 - 列出redis01和redis02的keys：  
-![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis01-01.png)   
-![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis01-02.png)
+![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis01-01.png)   
+![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-02.png)
 - 在redis02命令界面输入：slaveof <masterIp> <masterPort> 设置主从, slaveof 172.17.0.2 6379    
-![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis01-02-slaveof-info.png)    
-![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis02-02-slaveof-info.png)  
+![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis01-02-slaveof-info.png)    
+![list slave](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-02-slaveof-info.png)  
 - 在redis02命令界面输入：slaveof no one，取消主从  
-![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis02-03-slaveof-no-one.png)
+![list keys](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-03-slaveof-no-one.png)
 ### Sentinel 哨兵模式
 - 两个redis,分别启动，[redis01_sentinel配置](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/config/sentinel_6379.conf),[redis02_sentinel配置](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/config/sentinel_6380.conf)  
   ```shell script
@@ -22,8 +22,8 @@
   redis-sentinel sentinel_6379.conf
   ``` 
 - 查看哨兵  
-![sentinel1](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis01-sentinel-info.png)  
-![sentinel2](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/imges/Redis02-sentinel-info.png)
+![sentinel1](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis01-sentinel-info.png)  
+![sentinel2](https://github.com/jmwasky/JAVA-000/blob/main/Week_12/redis/images/Redis02-sentinel-info.png)
 ### Cluster集群  
 集群最多1000个节点
 - 配置文件，计划使用docker创建6个redis节点    
