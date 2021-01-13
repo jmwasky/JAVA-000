@@ -1,0 +1,17 @@
+server:
+  kafkaTopic: testisaac
+spring:
+  kafka:
+    bootstrap-servers:
+      - 127.0.0.1:19091
+      - 127.0.0.1:19092
+      - 127.0.0.1:19093
+    producer:
+      acks: 1
+    consumer:
+      group-id: consumer-test
+      enable-auto-commit: false
+      auto-offset-reset:  latest
+      max-poll-records: 10
+    template:
+      default-topic: testisaac
