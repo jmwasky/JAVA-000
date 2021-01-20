@@ -20,9 +20,9 @@ public class EasyArrayQueue<E> extends AbstractQueue<E> {
 
     private final E[] arrayQueue;
 
-    private static AtomicInteger DATA_OFFSET = new AtomicInteger(0);
+    private AtomicInteger DATA_OFFSET = new AtomicInteger(0);
 
-    private static Map<String, Integer> CONSUMER_OFFSET_MAP = new ConcurrentHashMap<String, Integer>();
+    private Map<String, Integer> CONSUMER_OFFSET_MAP = new ConcurrentHashMap<String, Integer>();
 
     /**
      * Lock used for all public operations
@@ -76,7 +76,7 @@ public class EasyArrayQueue<E> extends AbstractQueue<E> {
      * @param consumerKey
      * @return
      */
-    public E poll(String consumerKey) {
+    private E poll(String consumerKey) {
         E result = null;
         if (null == consumerKey) {
             consumerKey = DEFAULT_CONSUMER_KEY;

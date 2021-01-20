@@ -18,6 +18,10 @@ public class KmqConsumer<T> {
     public KmqMessage<T> poll(long timeout) {
         return kmq.poll(timeout);
     }
+    public KmqMessage<T> poll(String consumerKey) {
+        return kmq.poll(consumerKey);
+    }
+
     public KmqMessage<T> poll() {
         return kmq.poll();
     }

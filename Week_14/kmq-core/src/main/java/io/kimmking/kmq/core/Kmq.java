@@ -29,9 +29,10 @@ public final class Kmq {
         return queue.poll();
     }
 
-    /*public KmqMessage poll(String consumerKey) {
-        return queue.poll(consumerKey);
-    }*/
+    @SneakyThrows
+    public KmqMessage poll(String consumerKey) {
+        return queue.poll(consumerKey, 100L, TimeUnit.MILLISECONDS);
+    }
 
     @SneakyThrows
     public KmqMessage poll(long timeout) {
